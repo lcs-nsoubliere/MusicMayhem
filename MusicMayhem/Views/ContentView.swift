@@ -11,6 +11,11 @@ struct ContentView: View {
     
     // MARK: Stored Properties
     
+    //these values are for the like button
+    @State var circleColorChanged = false
+    @State var heartColorChanged = false
+    @State var heartSizeChanged = false
+    
     //detect when an app moves between forground and backround (when the app goes on and off)
     //https://developer.apple.com/documentation/swiftui/environment
     
@@ -41,10 +46,29 @@ struct ContentView: View {
                         .stroke(Color.primary, lineWidth: 4)
                 )
                 .padding(10)
-            Image(systemName: "heart.circle")
-                .resizable()
-                .frame(width: 40,
-                       height: 40)
+           
+            ZStack {
+                //create the circle that will chnage colour for the heart
+                Circle()
+                    .frame(width: 40, height: 40)
+                    .foregroundColor(circleColorChanged ? Color(.systemGray5) : .red)
+                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+                
+                //create the heart
+                Image(systemName: "heart.fill")
+                    .foregroundColor(heartColorChanged ? .red : .white)
+                    .font(.system(size: 25))
+                    .animation(nil)
+                // Cancel the animation from here
+                    .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
+                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+            }
+            //modify thew image
+            .onTapGesture {
+                self.circleColorChanged.toggle()
+                self.heartColorChanged.toggle()
+                self.heartSizeChanged.toggle()
+            }
             //                  condition                              true       false
                 .foregroundColor(currentQuestionAddedToFavourites == true ? .red : .secondary)
                 .onTapGesture {

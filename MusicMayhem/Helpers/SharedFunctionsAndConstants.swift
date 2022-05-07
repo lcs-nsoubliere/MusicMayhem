@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 //return the location of the documents directory for this app
 func getDocumentsDirectory() -> URL {
     let paths = FileManager.default.urls(for: .documentDirectory,
