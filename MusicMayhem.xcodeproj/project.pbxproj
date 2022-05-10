@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C89ECDEE282A9A9000334EAD /* TriviaQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89ECDED282A9A9000334EAD /* TriviaQuestion.swift */; };
 		C8AE1BEF2825A60600F72C63 /* MusicMayhemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE1BEE2825A60600F72C63 /* MusicMayhemApp.swift */; };
 		C8AE1BF12825A60600F72C63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE1BF02825A60600F72C63 /* ContentView.swift */; };
 		C8AE1BF32825A60900F72C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8AE1BF22825A60900F72C63 /* Assets.xcassets */; };
 		C8AE1BF62825A60900F72C63 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8AE1BF52825A60900F72C63 /* Preview Assets.xcassets */; };
-		C8AE1C022825A6F700F72C63 /* TriviaQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE1C012825A6F700F72C63 /* TriviaQuestion.swift */; };
 		C8AE1C042825ABF400F72C63 /* SharedFunctionsAndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE1C032825ABF400F72C63 /* SharedFunctionsAndConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C89ECDED282A9A9000334EAD /* TriviaQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaQuestion.swift; sourceTree = "<group>"; };
 		C8AE1BEB2825A60600F72C63 /* MusicMayhem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicMayhem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8AE1BEE2825A60600F72C63 /* MusicMayhemApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMayhemApp.swift; sourceTree = "<group>"; };
 		C8AE1BF02825A60600F72C63 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C8AE1BF22825A60900F72C63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8AE1BF52825A60900F72C63 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C8AE1C012825A6F700F72C63 /* TriviaQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TriviaQuestion.swift; path = ../../../TriviaQuestion.swift; sourceTree = "<group>"; };
 		C8AE1C032825ABF400F72C63 /* SharedFunctionsAndConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFunctionsAndConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,7 +84,7 @@
 		C8AE1BFF2825A68C00F72C63 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C8AE1C012825A6F700F72C63 /* TriviaQuestion.swift */,
+				C89ECDED282A9A9000334EAD /* TriviaQuestion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,7 +169,7 @@
 			files = (
 				C8AE1C042825ABF400F72C63 /* SharedFunctionsAndConstants.swift in Sources */,
 				C8AE1BF12825A60600F72C63 /* ContentView.swift in Sources */,
-				C8AE1C022825A6F700F72C63 /* TriviaQuestion.swift in Sources */,
+				C89ECDEE282A9A9000334EAD /* TriviaQuestion.swift in Sources */,
 				C8AE1BEF2825A60600F72C63 /* MusicMayhemApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

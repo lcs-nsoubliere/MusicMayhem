@@ -41,34 +41,53 @@ struct ContentView: View {
                 .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.leading)
                 .padding(30)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .stroke(Color.primary, lineWidth: 4)
-                )
-                .padding(10)
-           
-            ZStack {
-                //create the circle that will chnage colour for the heart
-                Circle()
-                    .frame(width: 40, height: 40)
-                    .foregroundColor(circleColorChanged ? Color(.systemGray5) : .red)
-                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
-                
-                //create the heart
-                Image(systemName: "heart.fill")
-                    .foregroundColor(heartColorChanged ? .red : .white)
+
+            //True and False Question
+            HStack{
+            Text("True")
                     .font(.system(size: 25))
-                    .animation(nil)
-                // Cancel the animation from here
-                    .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
-                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+                .font(.title)
+                .padding(25)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.primary, lineWidth: 2.5)
+                )
+           
+            Text("False")
+                    .font(.system(size: 25))
+                .font(.title)
+                .padding(25)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.primary, lineWidth: 2.5)
+                )
             }
-            //modify thew image
-            .onTapGesture {
-                self.circleColorChanged.toggle()
-                self.heartColorChanged.toggle()
-                self.heartSizeChanged.toggle()
-            }
+                .padding(10)
+        
+ 
+            //trying to get like button
+            Image(systemName: "heart.circle")
+                .resizable()
+                .frame(width: 40,
+                       height: 40)
+//            ZStack {
+//                //create the circle that will chnage colour for the heart
+//                Circle()
+//                    .frame(width: 40, height: 40)
+//                    .foregroundColor(circleColorChanged ? Color(.systemGray5) : .red)
+//                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+//
+//                //create the heart
+//                Image(systemName: "heart.fill")
+//                    .foregroundColor(heartColorChanged ? .red : .white)
+//                    .font(.system(size: 25))
+//                    .animation(nil)
+//
+//                // Cancel the animation from here
+//                    .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
+//                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+//            }
+            
             //                  condition                              true       false
                 .foregroundColor(currentQuestionAddedToFavourites == true ? .red : .secondary)
                 .onTapGesture {
@@ -158,7 +177,7 @@ struct ContentView: View {
     func loadNewquestion() async {
         
         // Assemble the URL that points to the endpoint
-        let url = URL(string: "https://opentdb.com/api.php?amount=50&category=12&difficulty=easy&type=boolean")!
+        let url = URL(string: "https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=boolean")!
         
         // Define the type of data we want from the endpoint
         // Configure the request to the web site
@@ -268,3 +287,4 @@ struct ContentView_Previews: PreviewProvider {
         }
     }
 }
+
