@@ -24,36 +24,42 @@ struct ContentView: View {
     @State var questionList: [TriviaQuestion] = []
     
     @State var currentQuestion: TriviaQuestion = TriviaQuestion(  category:
-                                                            "Entertainment: Music",
-                                                            type: "boolean",
-                                                            difficulty: "easy",
-                                                            question: "The music group Daft Punk got their name from a negative review they recieved.",
-                                                            correct_answer: "True",
-                                                            incorrect_answers: ["False"])
-                                                                     
-                                                                     
-                                                                     
-                                                                     
-                                                                     
-                                                                  
-                                                                     
-        //this will keep track of our list of favourit questions
-            //the square brackets means its a list
-        @State var favourites: [TriviaQuestion] = [] // <- the empty square brackets mean it starts emptpy
-                                                                     
-        //this will let us know wether the current question exists as a favourite
-        @State var currentQuestionAddedToFavourites: Bool = false
-                                                                     
-                // MARK: Computed Properties
-                                                                     
-            var body: some View {
+                                                                    "Entertainment: Music",
+                                                                  type: "boolean",
+                                                                  difficulty: "easy",
+                                                                  question: "The music group Daft Punk got their name from a negative review they recieved.",
+                                                                  correct_answer: "True",
+                                                                  incorrect_answers: ["False"])
+    
+    
+    
+    
+    
+    
+    
+    //this will keep track of our list of favourit questions
+    //the square brackets means its a list
+    @State var favourites: [TriviaQuestion] = [] // <- the empty square brackets mean it starts emptpy
+    
+    //this will let us know wether the current question exists as a favourite
+    @State var currentQuestionAddedToFavourites: Bool = false
+    
+    // MARK: Computed Properties
+    
+    var body: some View {
         VStack {
-            
+            ScrollView{
             Text(currentQuestion.question)
+                .frame(width: 250, height: 150)
+                .padding()
+                .scaledToFit()
                 .font(.title)
                 .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.leading)
-                .padding(30)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(Color.primary, lineWidth: 5)
+                )
             
             //True and False Question
             HStack{
@@ -137,10 +143,11 @@ struct ContentView: View {
             //this will iterate over the list of favourites
             //as we iterate, each individual favourit is
             //accessable via "currentFavourit"
-            List(favourites, id: \.self) { currentFavourit in
-                Text(currentFavourit.question)
-            }
+                 ForEach(favourites, id: \.self) { currentFavourit in
+                    Text(currentFavourit.question)
+                }
             
+        
             Spacer()
             
         }
@@ -179,15 +186,16 @@ struct ContentView: View {
         .navigationTitle("Music Mayhem")
         .padding()
         
-        
     }
-                                                                     
-                                                                     //MARK: Function
-                                                                     
-                                                                     //define the function "loadNewquestion"
-                                                                     //teaching our app to do a "new thing"
-                                                                     //using th new async keyword means that this func might load/update alongside other task (it runs while the computer does other stuff)
-                                                                     func loadNewquestion() async {
+    }
+    
+    //MARK: Function
+    
+    //define the function "loadNewquestion"
+    //teaching our app to do a "new thing"
+    //using th new async keyword means that this func might load/update alongside other task (it runs while the computer does other stuff)
+    
+    func loadNewquestion() async {
         
         // Assemble the URL that points to the endpoint
         let url = URL(string: "https://opentdb.com/api.php?amount=10&difficulty=easy&type=boolean")!
@@ -229,9 +237,9 @@ struct ContentView: View {
             print(error)
         }
     }
-                                                                     
-                                                                     //save the data permanently
-                                                                     func persistFavourites() {
+    
+    //save the data permanently
+    func persistFavourites() {
         
         //get a location under which to save the data
         let filename = getDocumentsDirectory().appendingPathComponent(savedFavouritesLabel)
@@ -260,12 +268,11 @@ struct ContentView: View {
             print("Unable to write list of favourites to docuents directofy")
             print("========")
             print(error.localizedDescription)
+            
         }
-        
     }
-                                                                     
-                                                                     //loads the data that was saved
-                                                                     func loadFavourites() {
+    //loads the data that was saved
+    func loadFavourites() {
         
         //get a location under which to save the data
         let filename = getDocumentsDirectory().appendingPathComponent(savedFavouritesLabel)
@@ -292,13 +299,12 @@ struct ContentView: View {
             print(error.localizedDescription)
         }
     }
-                                                                     }
-                                                                     
-                                                                     struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            NavigationView {
-                ContentView()
-            }
+}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            ContentView()
         }
     }
-                                                                     
+}
+
