@@ -21,19 +21,32 @@ struct ContentView: View {
     
     @Environment(\.scenePhase) var scenePhase
     
-    @State var currentQuestion: TriviaQuestion = TriviaQuestion(id: "",
-                                                                question: "Did you know that...",
-                                                                status: 0)
-    //this will keep track of our list of favourit questions
-    //the square brackets means its a list
-    @State var favourites: [TriviaQuestion] = [] // <- the empty square brackets mean it starts emptpy
+    @State var questionList: [TriviaQuestion] = []
     
-    //this will let us know wether the current question exists as a favourite
-    @State var currentQuestionAddedToFavourites: Bool = false
-    
-    // MARK: Computed Properties
-    
-    var body: some View {
+    @State var currentQuestion: TriviaQuestion = TriviaQuestion(  category:
+                                                            "Entertainment: Music",
+                                                            type: "boolean",
+                                                            difficulty: "easy",
+                                                            question: "The music group Daft Punk got their name from a negative review they recieved.",
+                                                            correct_answer: "True",
+                                                            incorrect_answers: ["False"])
+                                                                     
+                                                                     
+                                                                     
+                                                                     
+                                                                     
+                                                                  
+                                                                     
+        //this will keep track of our list of favourit questions
+            //the square brackets means its a list
+        @State var favourites: [TriviaQuestion] = [] // <- the empty square brackets mean it starts emptpy
+                                                                     
+        //this will let us know wether the current question exists as a favourite
+        @State var currentQuestionAddedToFavourites: Bool = false
+                                                                     
+                // MARK: Computed Properties
+                                                                     
+            var body: some View {
         VStack {
             
             Text(currentQuestion.question)
@@ -41,52 +54,52 @@ struct ContentView: View {
                 .minimumScaleFactor(0.5)
                 .multilineTextAlignment(.leading)
                 .padding(30)
-
+            
             //True and False Question
             HStack{
-            Text("True")
+                Text("True")
                     .font(.system(size: 25))
-                .font(.title)
-                .padding(25)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.primary, lineWidth: 2.5)
-                )
-           
-            Text("False")
+                    .font(.title)
+                    .padding(25)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.primary, lineWidth: 2.5)
+                    )
+                
+                Text("False")
                     .font(.system(size: 25))
-                .font(.title)
-                .padding(25)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.primary, lineWidth: 2.5)
-                )
+                    .font(.title)
+                    .padding(25)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.primary, lineWidth: 2.5)
+                    )
             }
-                .padding(10)
-        
- 
+            .padding(10)
+            
+            
             //trying to get like button
             Image(systemName: "heart.circle")
                 .resizable()
                 .frame(width: 40,
                        height: 40)
-//            ZStack {
-//                //create the circle that will chnage colour for the heart
-//                Circle()
-//                    .frame(width: 40, height: 40)
-//                    .foregroundColor(circleColorChanged ? Color(.systemGray5) : .red)
-//                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
-//
-//                //create the heart
-//                Image(systemName: "heart.fill")
-//                    .foregroundColor(heartColorChanged ? .red : .white)
-//                    .font(.system(size: 25))
-//                    .animation(nil)
-//
-//                // Cancel the animation from here
-//                    .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
-//                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
-//            }
+            //            ZStack {
+            //                //create the circle that will chnage colour for the heart
+            //                Circle()
+            //                    .frame(width: 40, height: 40)
+            //                    .foregroundColor(circleColorChanged ? Color(.systemGray5) : .red)
+            //                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+            //
+            //                //create the heart
+            //                Image(systemName: "heart.fill")
+            //                    .foregroundColor(heartColorChanged ? .red : .white)
+            //                    .font(.system(size: 25))
+            //                    .animation(nil)
+            //
+            //                // Cancel the animation from here
+            //                    .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
+            //                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+            //            }
             
             //                  condition                              true       false
                 .foregroundColor(currentQuestionAddedToFavourites == true ? .red : .secondary)
@@ -168,16 +181,16 @@ struct ContentView: View {
         
         
     }
-    
-    //MARK: Function
-    
-    //define the function "loadNewquestion"
-    //teaching our app to do a "new thing"
-    //using th new async keyword means that this func might load/update alongside other task (it runs while the computer does other stuff)
-    func loadNewquestion() async {
+                                                                     
+                                                                     //MARK: Function
+                                                                     
+                                                                     //define the function "loadNewquestion"
+                                                                     //teaching our app to do a "new thing"
+                                                                     //using th new async keyword means that this func might load/update alongside other task (it runs while the computer does other stuff)
+                                                                     func loadNewquestion() async {
         
         // Assemble the URL that points to the endpoint
-        let url = URL(string: "https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=boolean")!
+        let url = URL(string: "https://opentdb.com/api.php?amount=10&difficulty=easy&type=boolean")!
         
         // Define the type of data we want from the endpoint
         // Configure the request to the web site
@@ -204,6 +217,7 @@ struct ContentView: View {
             //                                         V
             currentQuestion = try JSONDecoder().decode(TriviaQuestion.self, from: data)
             
+            print(currentQuestion)
             //reset the flag that tracks wether the current question
             //is a favourit
             currentQuestionAddedToFavourites = false
@@ -215,9 +229,9 @@ struct ContentView: View {
             print(error)
         }
     }
-    
-    //save the data permanently
-    func persistFavourites() {
+                                                                     
+                                                                     //save the data permanently
+                                                                     func persistFavourites() {
         
         //get a location under which to save the data
         let filename = getDocumentsDirectory().appendingPathComponent(savedFavouritesLabel)
@@ -249,9 +263,9 @@ struct ContentView: View {
         }
         
     }
-    
-    //loads the data that was saved
-    func loadFavourites() {
+                                                                     
+                                                                     //loads the data that was saved
+                                                                     func loadFavourites() {
         
         //get a location under which to save the data
         let filename = getDocumentsDirectory().appendingPathComponent(savedFavouritesLabel)
@@ -278,13 +292,13 @@ struct ContentView: View {
             print(error.localizedDescription)
         }
     }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            ContentView()
+                                                                     }
+                                                                     
+                                                                     struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            NavigationView {
+                ContentView()
+            }
         }
     }
-}
-
+                                                                     
