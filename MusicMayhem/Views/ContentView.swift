@@ -12,8 +12,6 @@ struct ContentView: View {
     // MARK: Stored Properties
     
     //these values are for the like button
-    @State var circleColorChanged = false
-    @State var heartColorChanged = false
     @State var heartSizeChanged = false
     
     //detect when an app moves between forground and backround (when the app goes on and off)
@@ -44,27 +42,41 @@ struct ContentView: View {
     //this will let us know wether the current question exists as a favourite
     @State var currentQuestionAddedToFavourites: Bool = false
     
+    @State var userAnswer: String = ""
+    
     // MARK: Computed Properties
     
     var body: some View {
         VStack {
             ScrollView{
-                Text(String(htmlEncodedString: currentQuestion.question) ?? "Could not decode")
-                    .frame(width: 250, height: 150)
-                    .padding()
-                    .scaledToFit()
-                    .font(.title)
-                    .minimumScaleFactor(0.5)
-                    .multilineTextAlignment(.leading)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.primary, lineWidth: 5)
-                    )
+                VStack {
+                    if userAnswer.isEmpty {
+                        Text(String(htmlEncodedString: currentQuestion.question) ?? "Could not decode")
+                    } else {
+                        if userAnswer == currentQuestion.correct_answer {
+                            Text("Correct")
+                        } else {
+                            Text("Maybe next time...")
+                        }
+                    }
+                    
+                }
+                .frame(width: 250, height: 150)
+                .padding()
+                .scaledToFit()
+                .font(.title)
+                .minimumScaleFactor(0.5)
+                .multilineTextAlignment(.leading)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.primary, lineWidth: 5)
+                )
                 
                 //True and False Question
                 HStack{
                     
                     Button("True") {
+                        userAnswer = "True"
                         print("Button pressed!")
                     }
                     .padding(15.5)
@@ -74,6 +86,7 @@ struct ContentView: View {
                     .padding(20)
                     
                     Button("False") {
+                        userAnswer = "False"
                         print("Button pressed!")
                     }
                     .padding()
@@ -84,52 +97,54 @@ struct ContentView: View {
                 }
                 .padding(10)
                 
+//
+//                //old like
+//                Image(systemName: "heart.circle")
+//                    .resizable()
+//                    .frame(width: 40,
+//                           height: 40)
                 
-                //trying to get like button
-                Image(systemName: "heart.circle")
-                    .resizable()
-                    .frame(width: 40,
-                           height: 40)
-                //            ZStack {
-                //                //create the circle that will chnage colour for the heart
-                //                Circle()
-                //                    .frame(width: 40, height: 40)
-                //                    .foregroundColor(circleColorChanged ? Color(.systemGray5) : .red)
-                //                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
-                //
-                //                //create the heart
-                //                Image(systemName: "heart.fill")
-                //                    .foregroundColor(heartColorChanged ? .red : .white)
-                //                    .font(.system(size: 25))
-                //                    .animation(nil)
-                //
-                //                // Cancel the animation from here
-                //                    .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
-                //                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
-                //            }
+                ZStack {
+                    //create the circle that will chnage colour for the heart
+                    Circle()
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(currentQuestionAddedToFavourites == true ? .red : Color(.systemGray5))
+                        .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+    
+                    //create the heart
+                    Image(systemName: "heart.fill")
+                        .font(.system(size: 25))
+                        .foregroundColor(.white)
+                        .animation(nil)
+    
+                    // Cancel the animation from here
+                        .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
+                        .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+                }
+                .onTapGesture {
+                    
+                    //only add to list if it is not already there
+                    if currentQuestionAddedToFavourites == false {
+                        
+                        //adds the current question to favourite list
+                        favourites.append(currentQuestion)
+                        
+                        //record that we have marked this as a favourit
+                        currentQuestionAddedToFavourites = true
+                    }
+                    
+                }
+            
+                
                 
                 
                 //                  condition                              true       false
-                    .foregroundColor(currentQuestionAddedToFavourites == true ? .red : .secondary)
-                    .onTapGesture {
-                        
-                        //only add to list if it is not already there
-                        if currentQuestionAddedToFavourites == false {
-                            
-                            //adds the current question to favourite list
-                            favourites.append(currentQuestion)
-                            
-                            //record that we have marked this as a favourit
-                            currentQuestionAddedToFavourites = true
-                        }
-                        
-                    }
-                
+                    
                 Button(action: {
                     //the task allows us to run asynchronous code within a button and have the user interface be updated when the data is ready
                     //since it is asynchronous, other tasks can run while we wait for the data to come back from the web server
                     Task {
-                  
+                        userAnswer = ""
                         //call the fucntion (we created) that will load a new question
                         await loadNewquestion()
                     }
