@@ -49,144 +49,146 @@ struct ContentView: View {
     var body: some View {
         VStack {
             ScrollView{
-            Text(currentQuestion.question)
-                .frame(width: 250, height: 150)
-                .padding()
-                .scaledToFit()
-                .font(.title)
-                .minimumScaleFactor(0.5)
-                .multilineTextAlignment(.leading)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 15)
-                        .stroke(Color.primary, lineWidth: 5)
-                )
-            
-            //True and False Question
-            HStack{
-                Text("True")
-                    .font(.system(size: 25))
+                Text(currentQuestion.question)
+                    .frame(width: 250, height: 150)
+                    .padding()
+                    .scaledToFit()
                     .font(.title)
-                    .padding(25)
+                    .minimumScaleFactor(0.5)
+                    .multilineTextAlignment(.leading)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.primary, lineWidth: 2.5)
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.primary, lineWidth: 5)
                     )
                 
-                Text("False")
-                    .font(.system(size: 25))
-                    .font(.title)
-                    .padding(25)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.primary, lineWidth: 2.5)
-                    )
-            }
-            .padding(10)
-            
-            
-            //trying to get like button
-            Image(systemName: "heart.circle")
-                .resizable()
-                .frame(width: 40,
-                       height: 40)
-            //            ZStack {
-            //                //create the circle that will chnage colour for the heart
-            //                Circle()
-            //                    .frame(width: 40, height: 40)
-            //                    .foregroundColor(circleColorChanged ? Color(.systemGray5) : .red)
-            //                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
-            //
-            //                //create the heart
-            //                Image(systemName: "heart.fill")
-            //                    .foregroundColor(heartColorChanged ? .red : .white)
-            //                    .font(.system(size: 25))
-            //                    .animation(nil)
-            //
-            //                // Cancel the animation from here
-            //                    .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
-            //                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
-            //            }
-            
-            //                  condition                              true       false
-                .foregroundColor(currentQuestionAddedToFavourites == true ? .red : .secondary)
-                .onTapGesture {
+                //True and False Question
+                HStack{
                     
-                    //only add to list if it is not already there
-                    if currentQuestionAddedToFavourites == false {
-                        
-                        //adds the current question to favourite list
-                        favourites.append(currentQuestion)
-                        
-                        //record that we have marked this as a favourit
-                        currentQuestionAddedToFavourites = true
+                    Button("True") {
+                        print("Button pressed!")
                     }
+                    .padding(15.5)
+                    .background(Color.green)
+                    .cornerRadius(20)
+                    .font(.system(size: 40))
+                    .padding(20)
                     
+                    Button("False") {
+                        print("Button pressed!")
+                    }
+                    .padding()
+                    .background(Color.red)
+                    .cornerRadius(20)
+                    .font(.system(size: 40))
+                    .padding(20)
                 }
-            
-            Button(action: {
-                //the task allows us to run asynchronous code within a button and have the user interface be updated when the data is ready
-                //since it is asynchronous, other tasks can run while we wait for the data to come back from the web server
-                Task {
-                    //call the fucntion (we created) that will load a new question
-                    await loadNewquestion()
-                }
-            }, label: {
-                Text("Another One!")
-            })
-                .buttonStyle(.bordered)
-            
-            Text("Favourites")
-                .bold()
-            
-            Spacer()
-            
-            //this will iterate over the list of favourites
-            //as we iterate, each individual favourit is
-            //accessable via "currentFavourit"
-                 ForEach(favourites, id: \.self) { currentFavourit in
+                .padding(10)
+                
+                
+                //trying to get like button
+                Image(systemName: "heart.circle")
+                    .resizable()
+                    .frame(width: 40,
+                           height: 40)
+                //            ZStack {
+                //                //create the circle that will chnage colour for the heart
+                //                Circle()
+                //                    .frame(width: 40, height: 40)
+                //                    .foregroundColor(circleColorChanged ? Color(.systemGray5) : .red)
+                //                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+                //
+                //                //create the heart
+                //                Image(systemName: "heart.fill")
+                //                    .foregroundColor(heartColorChanged ? .red : .white)
+                //                    .font(.system(size: 25))
+                //                    .animation(nil)
+                //
+                //                // Cancel the animation from here
+                //                    .scaleEffect(heartSizeChanged ? 1.0 : 0.5)
+                //                    .animation(.spring(response: 0.3, dampingFraction: 0.3, blendDuration: 0.3))
+                //            }
+                
+                
+                //                  condition                              true       false
+                    .foregroundColor(currentQuestionAddedToFavourites == true ? .red : .secondary)
+                    .onTapGesture {
+                        
+                        //only add to list if it is not already there
+                        if currentQuestionAddedToFavourites == false {
+                            
+                            //adds the current question to favourite list
+                            favourites.append(currentQuestion)
+                            
+                            //record that we have marked this as a favourit
+                            currentQuestionAddedToFavourites = true
+                        }
+                        
+                    }
+                
+                Button(action: {
+                    //the task allows us to run asynchronous code within a button and have the user interface be updated when the data is ready
+                    //since it is asynchronous, other tasks can run while we wait for the data to come back from the web server
+                    Task {
+                        //call the fucntion (we created) that will load a new question
+                        await loadNewquestion()
+                    }
+                }, label: {
+                    Text("Another One!")
+                })
+                    .buttonStyle(.bordered)
+                
+                Text("Favourites")
+                    .bold()
+                
+                Spacer()
+                
+                //this will iterate over the list of favourites
+                //as we iterate, each individual favourit is
+                //accessable via "currentFavourit"
+                ForEach(favourites, id: \.self) { currentFavourit in
                     Text(currentFavourit.question)
                 }
-            
-        
-            Spacer()
-            
-        }
-        // When the app opens, get a new question from the web service
-        .task {
-            
-            //load question from the endpoint
-            //we are calling or invoking the function called "loadNewquestion"
-            //the term for this is the "call sote" of a function
-            //await means that we as the programmer are aware that this function is asyncronous
-            //(results may come back rate away or might take a sec to load in)
-            //also any code after this will run before this function is complete
-            await loadNewquestion()
-            
-            
-            //load favourites from the file saved on the device
-            loadFavourites()
-            
-            
-        }
-        
-        //react to chnages of state for the app (forground, backround, inactive)
-        .onChange(of: scenePhase) {newPhase in
-            
-            if newPhase == .inactive {
-                print("Inactive")
-            } else if newPhase == .active {
-                print("Active")
-            } else if newPhase == .background{
-                print("Background")
+                
+                
+                Spacer()
+                
+            }
+            // When the app opens, get a new question from the web service
+            .task {
+                
+                //load question from the endpoint
+                //we are calling or invoking the function called "loadNewquestion"
+                //the term for this is the "call sote" of a function
+                //await means that we as the programmer are aware that this function is asyncronous
+                //(results may come back rate away or might take a sec to load in)
+                //also any code after this will run before this function is complete
+                await loadNewquestion()
+                
+                
+                //load favourites from the file saved on the device
+                loadFavourites()
+                
+                
             }
             
-            //permanatnky save the list of tasks
-            persistFavourites()
+            //react to chnages of state for the app (forground, backround, inactive)
+            .onChange(of: scenePhase) {newPhase in
+                
+                if newPhase == .inactive {
+                    print("Inactive")
+                } else if newPhase == .active {
+                    print("Active")
+                } else if newPhase == .background{
+                    print("Background")
+                }
+                
+                //permanatnky save the list of tasks
+                persistFavourites()
+            }
+            .navigationTitle("Music Mayhem")
+            .padding()
+            
         }
-        .navigationTitle("Music Mayhem")
-        .padding()
-        
-    }
     }
     
     //MARK: Function
@@ -198,7 +200,7 @@ struct ContentView: View {
     func loadNewquestion() async {
         
         // Assemble the URL that points to the endpoint
-        let url = URL(string: "https://opentdb.com/api.php?amount=10&difficulty=easy&type=boolean")!
+        let url = URL(string: "https://opentdb.com/api.php?amount=1&category=12&difficulty=easy&type=boolean")!
         
         // Define the type of data we want from the endpoint
         // Configure the request to the web site
@@ -223,8 +225,8 @@ struct ContentView: View {
             //                                 DATA TYPE TO DECODE TO
             //                                         |
             //                                         V
-            currentQuestion = try JSONDecoder().decode(TriviaQuestion.self, from: data)
-            
+            let json = try JSONDecoder().decode(json_reader.self, from: data)
+            currentQuestion = json.results[0]
             print(currentQuestion)
             //reset the flag that tracks wether the current question
             //is a favourit
