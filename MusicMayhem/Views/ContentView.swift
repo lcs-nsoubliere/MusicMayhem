@@ -49,7 +49,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             ScrollView{
-                Text(currentQuestion.question)
+                Text(String(htmlEncodedString: currentQuestion.question) ?? "Could not decode")
                     .frame(width: 250, height: 150)
                     .padding()
                     .scaledToFit()
@@ -129,11 +129,12 @@ struct ContentView: View {
                     //the task allows us to run asynchronous code within a button and have the user interface be updated when the data is ready
                     //since it is asynchronous, other tasks can run while we wait for the data to come back from the web server
                     Task {
+                  
                         //call the fucntion (we created) that will load a new question
                         await loadNewquestion()
                     }
                 }, label: {
-                    Text("Another One!")
+                    Text("Give Me Another Question!!!")
                 })
                     .buttonStyle(.bordered)
                 

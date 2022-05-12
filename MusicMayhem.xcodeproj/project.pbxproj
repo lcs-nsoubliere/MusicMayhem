@@ -13,6 +13,7 @@
 		C8AE1BF32825A60900F72C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8AE1BF22825A60900F72C63 /* Assets.xcassets */; };
 		C8AE1BF62825A60900F72C63 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8AE1BF52825A60900F72C63 /* Preview Assets.xcassets */; };
 		C8AE1C042825ABF400F72C63 /* SharedFunctionsAndConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE1C032825ABF400F72C63 /* SharedFunctionsAndConstants.swift */; };
+		C8BB0378282D6E7A002FDD8D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB0377282D6E7A002FDD8D /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		C8AE1BF22825A60900F72C63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8AE1BF52825A60900F72C63 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C8AE1C032825ABF400F72C63 /* SharedFunctionsAndConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedFunctionsAndConstants.swift; sourceTree = "<group>"; };
+		C8BB0377282D6E7A002FDD8D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				C8AE1C032825ABF400F72C63 /* SharedFunctionsAndConstants.swift */,
+				C8BB0377282D6E7A002FDD8D /* String.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			files = (
 				C8AE1C042825ABF400F72C63 /* SharedFunctionsAndConstants.swift in Sources */,
 				C8AE1BF12825A60600F72C63 /* ContentView.swift in Sources */,
+				C8BB0378282D6E7A002FDD8D /* String.swift in Sources */,
 				C89ECDEE282A9A9000334EAD /* TriviaQuestion.swift in Sources */,
 				C8AE1BEF2825A60600F72C63 /* MusicMayhemApp.swift in Sources */,
 			);
