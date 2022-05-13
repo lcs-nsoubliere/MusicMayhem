@@ -54,9 +54,10 @@ struct ContentView: View {
                         Text(String(htmlEncodedString: currentQuestion.question) ?? "Could not decode")
                     } else {
                         if userAnswer == currentQuestion.correct_answer {
-                            Text("Correct")
+                           
+                            LottieView(animationNamed: "Guitar")
                         } else {
-                            Text("Haha you suck")
+                            LottieView(animationNamed: "SadMan")
                         }
                     }
                     
@@ -97,12 +98,6 @@ struct ContentView: View {
                 }
                 .padding(10)
                 
-//
-//                //old like
-//                Image(systemName: "heart.circle")
-//                    .resizable()
-//                    .frame(width: 40,
-//                           height: 40)
                 
                 ZStack {
                     //create the circle that will chnage colour for the heart

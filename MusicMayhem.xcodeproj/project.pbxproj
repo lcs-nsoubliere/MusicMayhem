@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C8083B7E282DEEF20080328F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C8083B7D282DEEF20080328F /* Lottie */; };
+		C8083B80282DEFB40080328F /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8083B7F282DEFB40080328F /* LottieView.swift */; };
+		C8083B82282DF4A30080328F /* Guitar.json in Resources */ = {isa = PBXBuildFile; fileRef = C8083B81282DF4A30080328F /* Guitar.json */; };
+		C8083B84282DF5CF0080328F /* SadMan.json in Resources */ = {isa = PBXBuildFile; fileRef = C8083B83282DF5CF0080328F /* SadMan.json */; };
 		C89ECDEE282A9A9000334EAD /* TriviaQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89ECDED282A9A9000334EAD /* TriviaQuestion.swift */; };
 		C8AE1BEF2825A60600F72C63 /* MusicMayhemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE1BEE2825A60600F72C63 /* MusicMayhemApp.swift */; };
 		C8AE1BF12825A60600F72C63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE1BF02825A60600F72C63 /* ContentView.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C8083B7F282DEFB40080328F /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		C8083B81282DF4A30080328F /* Guitar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Guitar.json; sourceTree = "<group>"; };
+		C8083B83282DF5CF0080328F /* SadMan.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SadMan.json; sourceTree = "<group>"; };
 		C89ECDED282A9A9000334EAD /* TriviaQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaQuestion.swift; sourceTree = "<group>"; };
 		C8AE1BEB2825A60600F72C63 /* MusicMayhem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicMayhem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8AE1BEE2825A60600F72C63 /* MusicMayhemApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicMayhemApp.swift; sourceTree = "<group>"; };
@@ -43,6 +49,9 @@
 		C8083B7B282DEB070080328F /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				C8083B83282DF5CF0080328F /* SadMan.json */,
+				C8083B81282DF4A30080328F /* Guitar.json */,
+				C8083B7F282DEFB40080328F /* LottieView.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -175,7 +184,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8AE1BF62825A60900F72C63 /* Preview Assets.xcassets in Resources */,
+				C8083B82282DF4A30080328F /* Guitar.json in Resources */,
 				C8AE1BF32825A60900F72C63 /* Assets.xcassets in Resources */,
+				C8083B84282DF5CF0080328F /* SadMan.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +200,7 @@
 				C8AE1C042825ABF400F72C63 /* SharedFunctionsAndConstants.swift in Sources */,
 				C8AE1BF12825A60600F72C63 /* ContentView.swift in Sources */,
 				C8BB0378282D6E7A002FDD8D /* String.swift in Sources */,
+				C8083B80282DEFB40080328F /* LottieView.swift in Sources */,
 				C89ECDEE282A9A9000334EAD /* TriviaQuestion.swift in Sources */,
 				C8AE1BEF2825A60600F72C63 /* MusicMayhemApp.swift in Sources */,
 			);
