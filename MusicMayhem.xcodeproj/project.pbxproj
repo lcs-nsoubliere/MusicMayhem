@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C8083B7E282DEEF20080328F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C8083B7D282DEEF20080328F /* Lottie */; };
 		C89ECDEE282A9A9000334EAD /* TriviaQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89ECDED282A9A9000334EAD /* TriviaQuestion.swift */; };
 		C8AE1BEF2825A60600F72C63 /* MusicMayhemApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE1BEE2825A60600F72C63 /* MusicMayhemApp.swift */; };
 		C8AE1BF12825A60600F72C63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE1BF02825A60600F72C63 /* ContentView.swift */; };
@@ -32,12 +33,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8083B7E282DEEF20080328F /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C8083B7B282DEB070080328F /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		C8AE1BE22825A60600F72C63 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				C8AE1BEE2825A60600F72C63 /* MusicMayhemApp.swift */,
+				C8083B7B282DEB070080328F /* Animations */,
 				C8AE1C002825A69200F72C63 /* Views */,
 				C8AE1BFF2825A68C00F72C63 /* Model */,
 				C8AE1BFE2825A67C00F72C63 /* Helpers */,
@@ -116,6 +126,9 @@
 			dependencies = (
 			);
 			name = MusicMayhem;
+			packageProductDependencies = (
+				C8083B7D282DEEF20080328F /* Lottie */,
+			);
 			productName = MusicMayhem;
 			productReference = C8AE1BEB2825A60600F72C63 /* MusicMayhem.app */;
 			productType = "com.apple.product-type.application";
@@ -144,6 +157,9 @@
 				Base,
 			);
 			mainGroup = C8AE1BE22825A60600F72C63;
+			packageReferences = (
+				C8083B7C282DEEF20080328F /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = C8AE1BEC2825A60600F72C63 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -304,6 +320,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"MusicMayhem/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -332,6 +349,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"MusicMayhem/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -375,6 +393,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C8083B7C282DEEF20080328F /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lcs-nsoubliere/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C8083B7D282DEEF20080328F /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C8083B7C282DEEF20080328F /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C8AE1BE32825A60600F72C63 /* Project object */;
 }

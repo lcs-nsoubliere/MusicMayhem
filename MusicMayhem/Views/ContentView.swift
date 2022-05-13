@@ -56,7 +56,7 @@ struct ContentView: View {
                         if userAnswer == currentQuestion.correct_answer {
                             Text("Correct")
                         } else {
-                            Text("Maybe next time...")
+                            Text("Haha you suck")
                         }
                     }
                     

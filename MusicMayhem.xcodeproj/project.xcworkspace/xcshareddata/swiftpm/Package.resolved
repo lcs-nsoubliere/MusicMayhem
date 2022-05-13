@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Lottie",
+        "repositoryURL": "https://github.com/lcs-nsoubliere/lottie-ios.git",
+        "state": {
+          "branch": "master",
+          "revision": "1132c03a6e4917988d78f865c3f3a24f6f4a87c3",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
